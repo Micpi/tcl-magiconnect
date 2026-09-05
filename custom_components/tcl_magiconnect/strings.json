@@ -1,0 +1,48 @@
+{
+  "title": "TCL MagiConnect",
+  "config": {
+    "step": {
+      "user": {
+        "menu_options": {
+          "manual": "Enter an address",
+          "discover": "Discover on the local network"
+        }
+      },
+      "manual": {
+        "title": "TCL MagiConnect",
+        "description": "Open MagiConnect/T-Cast on the TV and connect Home Assistant to the same LAN. Experimental: Google TV 2026 compatibility is unverified. No TCL PIN exchange has been identified in this protocol.",
+        "data": {
+          "host": "IP address or hostname",
+          "name": "Name"
+        }
+      },
+      "reconfigure": {
+        "title": "TCL MagiConnect",
+        "description": "Open MagiConnect/T-Cast on the TV and connect Home Assistant to the same LAN. Experimental: Google TV 2026 compatibility is unverified. No TCL PIN exchange has been identified in this protocol.",
+        "data": {
+          "host": "IP address or hostname",
+          "name": "Name"
+        }
+      },
+      "discover": {
+        "title": "Discovered TVs",
+        "data": {
+          "host": "TV"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect. Open MagiConnect on the TV and check TCP 6553 connectivity.",
+      "invalid_protocol": "The response does not match the supported MagiConnect protocol.",
+      "unsupported_encryption": "This TV requested an unsupported encryption algorithm."
+    },
+    "abort": {
+      "already_configured": "TV already configured.",
+      "no_devices_found": "No TV discovered. Try entering the address with MagiConnect open on the TV.",
+      "discovery_failed": "Discovery failed: check UDP 6537 or enter the address manually.",
+      "wrong_device": "This address belongs to another device.",
+      "unique_id_mismatch": "This address belongs to another device.",
+      "reconfigure_successful": "Address updated."
+    }
+  }
+}

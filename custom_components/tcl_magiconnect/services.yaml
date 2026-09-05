@@ -1,0 +1,61 @@
+send_text:
+  name: Send text
+  description: Send UTF-8 text to the focused TV input. Support depends on TV firmware.
+  target:
+    entity:
+      integration: tcl_magiconnect
+      domain: remote
+  fields:
+    text:
+      required: true
+      selector:
+        text:
+move_mouse:
+  name: Move mouse
+  description: Send relative pointer coordinates on supported models.
+  target:
+    entity:
+      integration: tcl_magiconnect
+      domain: remote
+  fields:
+    x:
+      required: true
+      selector:
+        number:
+          min: -2000
+          max: 2000
+          mode: box
+    y:
+      required: true
+      selector:
+        number:
+          min: -2000
+          max: 2000
+          mode: box
+launch_app:
+  name: Launch application
+  description: Open an installed Android package using MagiConnect.
+  target:
+    entity:
+      integration: tcl_magiconnect
+      domain: remote
+  fields:
+    package:
+      required: true
+      example: com.google.android.youtube.tv
+      selector:
+        text:
+refresh_apps:
+  name: Refresh applications
+  description: Read the installed application list and populate media player sources.
+  target:
+    entity:
+      integration: tcl_magiconnect
+      domain: remote
+get_screenshot_url:
+  name: Get screenshot URL
+  description: Ask the TV for a screenshot and return its local URL. No image is downloaded or stored by Home Assistant.
+  target:
+    entity:
+      integration: tcl_magiconnect
+      domain: remote

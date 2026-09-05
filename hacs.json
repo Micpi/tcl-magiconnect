@@ -1,0 +1,6 @@
+{
+  "name": "TCL MagiConnect (experimental)",
+  "homeassistant": "2025.12.0",
+  "render_readme": true,
+  "version": "0.1.0"
+}

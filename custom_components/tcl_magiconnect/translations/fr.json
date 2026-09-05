@@ -1,0 +1,48 @@
+{
+  "title": "TCL MagiConnect",
+  "config": {
+    "step": {
+      "user": {
+        "menu_options": {
+          "manual": "Saisir une adresse",
+          "discover": "Rechercher sur le réseau local"
+        }
+      },
+      "manual": {
+        "title": "TCL MagiConnect",
+        "description": "Ouvrez MagiConnect/T-Cast sur la TV et connectez Home Assistant au même réseau. Version expérimentale : compatibilité Google TV 2026 à confirmer. Aucun code PIN TCL n’a été identifié dans ce protocole.",
+        "data": {
+          "host": "Adresse IP ou nom d’hôte",
+          "name": "Nom"
+        }
+      },
+      "reconfigure": {
+        "title": "TCL MagiConnect",
+        "description": "Ouvrez MagiConnect/T-Cast sur la TV et connectez Home Assistant au même réseau. Version expérimentale : compatibilité Google TV 2026 à confirmer. Aucun code PIN TCL n’a été identifié dans ce protocole.",
+        "data": {
+          "host": "Adresse IP ou nom d’hôte",
+          "name": "Nom"
+        }
+      },
+      "discover": {
+        "title": "Téléviseurs détectés",
+        "data": {
+          "host": "Téléviseur"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Connexion impossible. Vérifiez que MagiConnect est ouvert sur la TV et que TCP 6553 est accessible.",
+      "invalid_protocol": "La réponse ne correspond pas au protocole MagiConnect pris en charge.",
+      "unsupported_encryption": "Le chiffrement demandé par cette TV n’est pas encore pris en charge."
+    },
+    "abort": {
+      "already_configured": "Téléviseur déjà configuré.",
+      "no_devices_found": "Aucune TV détectée. Essayez la saisie manuelle avec MagiConnect ouvert sur la TV.",
+      "discovery_failed": "Découverte indisponible : vérifiez UDP 6537 ou utilisez la saisie manuelle.",
+      "wrong_device": "Cette adresse correspond à un autre appareil.",
+      "unique_id_mismatch": "Cette adresse correspond à un autre appareil.",
+      "reconfigure_successful": "Adresse mise à jour."
+    }
+  }
+}

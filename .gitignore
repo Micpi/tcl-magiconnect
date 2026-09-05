@@ -1,0 +1,12 @@
+.research/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.pcap
+*.pcapng
+*.apk
+*.apks
+*.pem
+dist/
