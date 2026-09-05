@@ -81,6 +81,11 @@ def test_utf8_frame_length_and_encryption():
     assert decrypt(encrypt(b"149>>15")) == b"149>>15"
 
 
+def test_cipher_against_independent_node_openssl_vector():
+    # Node crypto.createCipheriv('aes-128-cbc', key, iv), default PKCS7.
+    assert encrypt(b"149>>15").hex() == "2c7495fb8d2d20e02616195d50c09351"
+
+
 def test_corrupt_encryption():
     with pytest.raises(ProtocolError):
         decrypt(b"invalid")

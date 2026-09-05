@@ -36,3 +36,17 @@ protocole. Ne pas publier de capture brute contenant des identifiants personnels
 
 Les tests automatisés simulent des échanges ; ils ne constituent pas une preuve
 de compatibilité matérielle. Les champs inconnus doivent rester inconnus.
+
+## Publication HACS
+
+`manifest.json` porte la version. `hacs.json` référence une archive nommée
+`tcl_magiconnect-<version>.zip` : les deux valeurs sont vérifiées par
+`python tools/build_release.py`. Les fichiers d'intégration sont à la racine du
+ZIP, comme attendu par HACS pour une release ZIP.
+
+Le schéma officiel HACS interdit le champ `version` dans `hacs.json`. Le script
+commun du workspace `scripts/release_hacs.ps1` l'ajoute systématiquement ; utiliser
+son mode `-DryRun` pour examiner le plan, puis publier le commit validé, le tag et
+l'archive via GitHub CLI. Cela conserve l'alignement des versions sans produire
+un manifeste HACS invalide. Ne pas utiliser ce script commun en mode publication
+sur ce composant tant que sa gestion des métadonnées n'est pas corrigée.
