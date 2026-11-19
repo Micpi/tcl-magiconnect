@@ -96,7 +96,16 @@ class MagiConnectClient:
                 length = struct.unpack(">I", await self._reader.readexactly(4))[0]
                 if not 0 < length < MAX_FRAME:
                     raise ProtocolError("Invalid response length")
-                message = decode(await self._reader.readexactly(length), self._algorithm)
+                payload = await self._reader.readexactly(length)
+                try:
+                    message = decode(payload, self._algorithm)
+                except ProtocolError:
+                    if self._algorithm != -1 or command != "159":
+                        raise
+                    # Some firmware sends an AES notification before the plaintext identity.
+                    message = decode(payload, 1)
+                    if message.split(">>", 1)[0] != "253":
+                        raise ProtocolError("Unexpected encrypted TCL handshake message") from None
                 parts = message.split(">>", 2)
                 if parts[0] == command and (subcommand is None or parts[1:2] == [subcommand]):
                     return message
