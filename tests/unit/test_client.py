@@ -86,6 +86,20 @@ async def test_apps_ignore_heartbeat_and_open_notification():
         assert apps[0].package == "com.test.app"
 
 
+async def test_encrypted_notification_before_plaintext_identity():
+    received = []
+
+    async def handler(reader, writer):
+        await read_message(reader)
+        writer.write(frame("253>>1>>0", 1) + frame(HELLO + ">>1"))
+        await writer.drain()
+        received.append(await read_message(reader, 1))
+
+    async with tv_server(handler) as client:
+        await client.send_keys(["up"])
+    assert received == ["149>>11"]
+
+
 @pytest.mark.parametrize("payload", [struct.pack(">I", 1048576), struct.pack(">I", 0)])
 async def test_bad_length_does_not_allocate(payload):
     async def handler(reader, writer):
